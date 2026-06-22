@@ -80,7 +80,7 @@ img {
   width: 34px; height: 34px;
   border-radius: 50%;
   background: rgba(255,255,255,0.1);
-  color: rgba(255,255,255,0.7);
+  color: rgba(168,216,196,0.85);
   transition: all 0.2s ease;
 }
 .social-icons a:hover {
@@ -126,7 +126,7 @@ img {
   align-items: center;
   justify-content: space-between;
   padding: 0.4rem 0.7rem;
-  color: rgba(255,255,255,0.65);
+  color: rgba(200,230,218,0.85);
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;
@@ -311,6 +311,10 @@ img {
   color: rgba(116, 86, 72, 0.6);
   margin-top: 0.25rem;
 }
+.author-me {
+  color: #B85C38;
+  font-weight: 700;
+}
 
 /* === DARK MODE === */
 html.dark body {
@@ -357,6 +361,27 @@ html.dark .pub-title, html.dark .conf-title {
 }
 html.dark .pub-meta {
   color: rgba(196, 168, 152, 0.6);
+}
+html.dark .author-me {
+  color: #E8A060;
+}
+html.dark .nav-item > a {
+  color: rgba(200,230,218,0.85);
+}
+html.dark .sub-nav li a {
+  color: rgba(200,230,218,0.5);
+}
+html.dark .sub-nav li a:hover {
+  color: rgba(200,230,218,0.8);
+}
+html.dark .sub-nav li a.active {
+  color: rgba(200,230,218,0.9);
+}
+html.dark .social-icons a {
+  color: rgba(168,216,196,0.85);
+}
+html.dark .social-icons a:hover {
+  color: #fff;
 }
 html.dark .pub-item, html.dark .conf-item {
   border-bottom-color: rgba(212, 184, 168, 0.1);
@@ -482,6 +507,7 @@ html.dark a {
         <ul class="sub-nav">
           <li data-view="cv"><a onclick="switchView('cv', this.closest('li'), this.closest('.nav-item'))"><span data-en="Brief CV" data-zh="简要简历">Brief CV</span></a></li>
           <li data-view="research-exp"><a onclick="switchView('research-exp', this.closest('li'), this.closest('.nav-item'))"><span data-en="Research Experience" data-zh="科研经历">Research Experience</span></a></li>
+          <li data-view="interests"><a onclick="switchView('interests', this.closest('li'), this.closest('.nav-item'))"><span data-en="Personal Interests" data-zh="个人兴趣">Personal Interests</span></a></li>
         </ul>
       </li>
       <li class="nav-item has-children" data-group="research">
@@ -512,7 +538,7 @@ html.dark a {
   <section class="view view-home active" id="view-home">
     <div class="home-bg" id="homeBg"></div>
     <div class="home-overlay">
-      <p data-en="My research focuses on the cognitive and neural mechanisms of cognitive control. I investigate the dopamine basis of interference control and the metacontrol mechanisms underlying cognitive conflict, using EEG and fMRI to explore how neuromelanin in the substantia nigra relates to individual differences in interference control." data-zh="我的研究聚焦于认知控制的认知与神经机制。我关注抑制控制的多巴胺基础以及认知冲突的元控制机制，运用 EEG 与 fMRI 探索黑质神经黑素与个体干扰控制差异之间的关系。">My research focuses on the cognitive and neural mechanisms of cognitive control. I investigate the dopamine basis of interference control and the metacontrol mechanisms underlying cognitive conflict, using EEG and fMRI to explore how neuromelanin in the substantia nigra relates to individual differences in interference control.</p>
+      <p data-en="Currently, my research is grounded in the metacontrol theoretical framework, focusing on the cognitive and neural mechanisms of cognitive control, with a particular interest in how the dopamine system shapes individual differences in interference control and adaptive behavior. I combine behavioral experiments, EEG, and neuromelanin-sensitive MRI to investigate how stable neurobiological traits influence human cognitive performance." data-zh="目前，我的研究在元控制理论框架下，聚焦于认知控制的认知与神经机制，特别关注多巴胺系统如何塑造干扰控制和适应性行为中的个体差异。我结合行为实验、EEG和神经黑素敏感MRI，探究稳定的神经生物学特征如何影响人类认知表现。">Currently, my research is grounded in the metacontrol theoretical framework, focusing on the cognitive and neural mechanisms of cognitive control, with a particular interest in how the dopamine system shapes individual differences in interference control and adaptive behavior. I combine behavioral experiments, EEG, and neuromelanin-sensitive MRI to investigate how stable neurobiological traits influence human cognitive performance.</p>
       <p class="home-hint" data-en="PhD Candidate in Psychology · Shandong Normal University" data-zh="山东师范大学 · 心理学博士研究生">PhD Candidate in Psychology · Shandong Normal University</p>
     </div>
   </section>
@@ -527,7 +553,7 @@ html.dark a {
       <span data-en="PhD Student in Developmental and Educational Psychology, Shandong Normal University" data-zh="山东师范大学 发展与教育心理学 博士研究生">PhD Student in Developmental and Educational Psychology, Shandong Normal University</span></p>
 
       <p><strong data-en="2021.09 – 2024.06" data-zh="2021.09 – 2024.06">2021.09 – 2024.06</strong><br>
-      <span data-en="M.A. in Applied Psychology, Guizhou Medical University (GPA: 90/100)" data-zh="贵州医科大学 应用心理 硕士（成绩：90/100）">M.A. in Applied Psychology, Guizhou Medical University (GPA: 90/100)</span></p>
+      <span data-en="M.A. in Applied Psychology, Guizhou Medical University" data-zh="贵州医科大学 应用心理 硕士">M.A. in Applied Psychology, Guizhou Medical University</span></p>
 
       <p><strong data-en="2015.09 – 2019.06" data-zh="2015.09 – 2019.06">2015.09 – 2019.06</strong><br>
       <span data-en="B.S. in Applied Psychology, Liaocheng University" data-zh="聊城大学 应用心理学 学士">B.S. in Applied Psychology, Liaocheng University</span></p>
@@ -545,10 +571,18 @@ html.dark a {
     <div class="content-block">
 
       <h3 data-en="2024.09 – Present · EEG/fMRI Research · Shandong Normal University" data-zh="2024.09 – 至今 · 脑电/fMRI 研究 · 山东师范大学">2024.09 – Present · EEG/fMRI Research · Shandong Normal University</h3>
-      <p data-en="Metacontrol, cognitive conflict, interference control, dopamine accumulation, and neuromelanin. Conducting EEG and fMRI experiments to investigate the neural basis of cognitive control." data-zh="元控制（metacontrol）、认知冲突（cognitive conflict）、抑制控制（interference control）、多巴胺沉积（dopamine accumulation）、神经黑素（neuromelanin）。开展脑电与 fMRI 实验，探究认知控制的神经基础。">Metacontrol, cognitive conflict, interference control, dopamine accumulation, and neuromelanin. Conducting EEG and fMRI experiments to investigate the neural basis of cognitive control.</p>
+      <p data-en="Under the metacontrol theoretical framework, conducting EEG and fMRI experiments to investigate the electrophysiological characteristics and dopamine basis of cognitive conflict and interference control." data-zh="在元控制理论框架下，开展脑电与 fMRI 实验，探究认知冲突、抑制控制的电生理特征与多巴胺基础。">Under the metacontrol theoretical framework, conducting EEG and fMRI experiments to investigate the electrophysiological characteristics and dopamine basis of cognitive conflict and interference control.</p>
 
-      <h3 data-en="2021.09 – 2023.06 · EEG Research · Guizhou Medical University" data-zh="2021.09 – 2023.06 · 脑电研究 · 贵州医科大学">2021.09 – 2023.06 · EEG Research · Guizhou Medical University</h3>
+      <h3 data-en="2021.09 – 2024.06 · EEG Research · Guizhou Medical University" data-zh="2021.09 – 2024.06 · 脑电研究 · 贵州医科大学">2021.09 – 2024.06 · EEG Research · Guizhou Medical University</h3>
       <p data-en="Boredom traits and boredom proneness (the influence of early educational experiences on boredom tendency); binge eating behavior (gender differences in binge eating behavior in Chinese culture)." data-zh="无聊特质与无聊倾向性（早年教育经历对无聊倾向的影响）；暴食行为（中国文化背景下暴食行为的性别差异）。">Boredom traits and boredom proneness (the influence of early educational experiences on boredom tendency); binge eating behavior (gender differences in binge eating behavior in Chinese culture).</p>
+    </div>
+  </section>
+
+  <!-- Personal Interests -->
+  <section class="view view-page view-about" id="view-interests">
+    <h1 class="section-title" data-en="Personal Interests" data-zh="个人兴趣">Personal Interests</h1>
+    <div class="content-block">
+      <p data-en="Coming soon..." data-zh="待补充...">Coming soon...</p>
     </div>
   </section>
 
@@ -557,15 +591,15 @@ html.dark a {
     <h1 class="section-title" data-en="Publications" data-zh="论文发表">Publications</h1>
     <div class="content-block">
       <div class="pub-item">
-        <div class="pub-title" data-en="Pi, Y., Zhang, Q., Lyu, S., Beste, C., Colzato, L., &amp; Hommel, B. (2026). Metacontrol-related aperiodic and periodic neural activity in cognitive aging: enhancing the neural signal-to-noise ratio through anodal transcranial direct current stimulation." data-zh="Pi, Y., Zhang, Q., Lyu, S., Beste, C., Colzato, L., &amp; Hommel, B. (2026). 认知老化中与元控制相关的非周期性和周期性神经活动：通过阳极经颅直流电刺激增强神经信噪比。">Pi, Y., Zhang, Q., Lyu, S., Beste, C., Colzato, L., &amp; Hommel, B. (2026). Metacontrol-related aperiodic and periodic neural activity in cognitive aging: enhancing the neural signal-to-noise ratio through anodal transcranial direct current stimulation.</div>
+        <div class="pub-title" data-en="Pi, Y., Zhang, Q., Lyu, S., Beste, C., Colzato, L., &amp; Hommel, B. (2026). Metacontrol-related aperiodic and periodic neural activity in cognitive aging: enhancing the neural signal-to-noise ratio through anodal transcranial direct current stimulation." data-zh="Pi, Y., Zhang, Q., Lyu, S., Beste, C., Colzato, L., &amp; Hommel, B. (2026). 认知老化中与元控制相关的非周期性和周期性神经活动：通过阳极经颅直流电刺激增强神经信噪比。">Pi, Y., Zhang, Q., <span class="author-me">Lyu, S.</span>, Beste, C., Colzato, L., &amp; Hommel, B. (2026). Metacontrol-related aperiodic and periodic neural activity in cognitive aging: enhancing the neural signal-to-noise ratio through anodal transcranial direct current stimulation.</div>
         <div class="pub-meta"><em>GeroScience</em>, 1-17.</div>
       </div>
       <div class="pub-item">
-        <div class="pub-title" data-en="Fan, J., Lyu, S., Xu, X., Colzato, L., &amp; Hommel, B. (2026). The impact of positive and negative affect on aperiodic EEG activity: evidence for a shared neural basis of metacontrol and emotion." data-zh="Fan, J., Lyu, S., Xu, X., Colzato, L., &amp; Hommel, B. (2026). 正负性情绪对非周期性脑电活动的影响：元控制与情绪共享神经基础的证据。">Fan, J., Lyu, S., Xu, X., Colzato, L., &amp; Hommel, B. (2026). The impact of positive and negative affect on aperiodic EEG activity: evidence for a shared neural basis of metacontrol and emotion.</div>
+        <div class="pub-title" data-en="Fan, J., Lyu, S., Xu, X., Colzato, L., &amp; Hommel, B. (2026). The impact of positive and negative affect on aperiodic EEG activity: evidence for a shared neural basis of metacontrol and emotion." data-zh="Fan, J., Lyu, S., Xu, X., Colzato, L., &amp; Hommel, B. (2026). 正负性情绪对非周期性脑电活动的影响：元控制与情绪共享神经基础的证据。">Fan, J., <span class="author-me">Lyu, S.</span>, Xu, X., Colzato, L., &amp; Hommel, B. (2026). The impact of positive and negative affect on aperiodic EEG activity: evidence for a shared neural basis of metacontrol and emotion.</div>
         <div class="pub-meta"><em>Cerebral Cortex</em>, 36(1), bhaf335.</div>
       </div>
       <div class="pub-item">
-        <div class="pub-title" data-en="Li, C., Lyu, S., Yan, J., &amp; Meng, X. (2023). The effect of gender in binge eating behavior in Chinese culture: the serial mediation model of body dissatisfaction and self-acceptance." data-zh="Li, C., Lyu, S., Yan, J., &amp; Meng, X. (2023). 中国文化中暴食行为的性别差异：身体不满意与自我接纳的链式中介模型。">Li, C., Lyu, S., Yan, J., &amp; Meng, X. (2023). The effect of gender in binge eating behavior in Chinese culture: the serial mediation model of body dissatisfaction and self-acceptance.</div>
+        <div class="pub-title" data-en="Li, C., Lyu, S., Yan, J., &amp; Meng, X. (2023). The effect of gender in binge eating behavior in Chinese culture: the serial mediation model of body dissatisfaction and self-acceptance." data-zh="Li, C., Lyu, S., Yan, J., &amp; Meng, X. (2023). 中国文化中暴食行为的性别差异：身体不满意与自我接纳的链式中介模型。">Li, C., <span class="author-me">Lyu, S.</span>, Yan, J., &amp; Meng, X. (2023). The effect of gender in binge eating behavior in Chinese culture: the serial mediation model of body dissatisfaction and self-acceptance.</div>
         <div class="pub-meta"><em>Frontiers in Psychology</em>, 14, 1285272. <span data-en="(co-first author)" data-zh="（共同一作）">(co-first author)</span></div>
       </div>
     </div>
@@ -637,6 +671,9 @@ function toggleLang() {
   currentLang = currentLang === 'en' ? 'zh' : 'en';
   document.querySelectorAll('[data-en]').forEach(function (el) {
     el.textContent = el.getAttribute('data-' + currentLang);
+  });
+  document.querySelectorAll('.pub-title').forEach(function (el) {
+    el.innerHTML = el.innerHTML.replace(/Lyu, S\./g, '<span class="author-me">Lyu, S.</span>');
   });
   document.getElementById('langToggle').textContent =
     currentLang === 'en' ? '\u4e2d\u6587' : 'EN';
