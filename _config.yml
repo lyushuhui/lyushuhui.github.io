@@ -6,14 +6,14 @@ highlighter:      rouge
 permalink:        pretty
 
 # Setup
-title:            Your Name
-tagline:          'Your Tagline'
-description:      'Your site description'
+title:            Shuhui Lyu
+tagline:          'Cognitive Neuroscience'
+description:      'PhD Student in Developmental and Educational Psychology, Shandong Normal University'
 url:              https://lyushuhui.github.io
 baseurl:          /
 
 author:
-  name:           'Your Name'
+  name:           'Shuhui Lyu'
   url:            https://github.com/lyushuhui
 
 paginate:         5

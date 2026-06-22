@@ -4,45 +4,20 @@ title: Home
 ---
 
 <style>
-/* === Base Overrides for SPA Layout === */
+/* === Base === */
 body {
+  margin: 0;
+  padding: 0;
   display: flex;
   min-height: 100vh;
   background-color: #fff;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
 }
-
-/* === Neutralize Hyde/Poole Theme Conflicts === */
-.sidebar,
-.sidebar a {
-  color: rgba(255,255,255,0.5) !important;
+* {
+  box-sizing: border-box;
 }
-.sidebar a:hover {
-  color: #fff !important;
-  text-decoration: none !important;
-}
-@media (min-width: 48em) {
-  .sidebar {
-    width: 280px !important;
-    text-align: center !important;
-  }
-}
-.content {
-  max-width: none !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-}
-.avatar img,
-.social-icons svg {
-  margin: 0 !important;
-  border-radius: 0 !important;
-}
-.social-icons svg {
-  display: inline !important;
-}
-strong {
-  color: inherit;
+img {
+  max-width: 100%;
 }
 
 /* === SIDEBAR === */
