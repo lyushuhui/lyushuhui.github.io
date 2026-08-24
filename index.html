@@ -412,6 +412,117 @@ html.dark .social-icons a {
 html.dark .social-icons a:hover {
   color: #fff;
 }
+
+/* --- Timeline --- */
+.timeline {
+  position: relative;
+  padding-left: 28px;
+  margin-top: 1rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: rgba(27, 45, 69, 0.18);
+  border-radius: 1px;
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.4rem;
+}
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+.timeline-dot {
+  position: absolute;
+  left: -26px;
+  top: 5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #E8923C;
+  border: 2px solid #F5F1EA;
+  box-shadow: 0 0 0 2px rgba(232, 146, 60, 0.25);
+}
+.timeline-date {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #1B2D45;
+  letter-spacing: 0.02em;
+}
+.timeline-content {
+  font-size: 0.95rem;
+  color: #2C3E5A;
+  margin-top: 0.15rem;
+  line-height: 1.5;
+}
+
+/* --- Skills Pills --- */
+.skills-group {
+  margin-bottom: 1rem;
+}
+.skills-group:last-child {
+  margin-bottom: 0;
+}
+.skills-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #1B2D45;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.45rem;
+}
+.skill-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+.skill-pill {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  background: #E8ECF2;
+  color: #1B2D45;
+  border: 1px solid rgba(27, 45, 69, 0.08);
+  transition: background 0.2s, transform 0.15s;
+}
+.skill-pill:hover {
+  background: #DCE4EC;
+  transform: translateY(-1px);
+}
+
+/* Dark mode: timeline & pills */
+html.dark .timeline::before {
+  background: rgba(184, 200, 216, 0.12);
+}
+html.dark .timeline-dot {
+  background: #F5C842;
+  border-color: #1B2838;
+  box-shadow: 0 0 0 2px rgba(245, 200, 66, 0.25);
+}
+html.dark .timeline-date {
+  color: #C8D4E0;
+}
+html.dark .timeline-content {
+  color: #8BA4BE;
+}
+html.dark .skills-label {
+  color: #C8D4E0;
+}
+html.dark .skill-pill {
+  background: rgba(184, 200, 216, 0.12);
+  color: #B8C8D8;
+  border-color: rgba(184, 200, 216, 0.15);
+}
+html.dark .skill-pill:hover {
+  background: rgba(184, 200, 216, 0.2);
+}
+
 html.dark .pub-item, html.dark .conf-item {
   border-bottom-color: rgba(184, 200, 216, 0.1);
 }
@@ -578,19 +689,49 @@ html.dark a {
     <div class="content-block">
 
       <h3 data-en="Education" data-zh="教育背景">Education</h3>
-      <p><strong data-en="2025.09 – Present" data-zh="2025.09 – 至今">2025.09 – Present</strong><br>
-      <span data-en="PhD Student in Developmental and Educational Psychology, Shandong Normal University" data-zh="山东师范大学 发展与教育心理学 博士研究生">PhD Student in Developmental and Educational Psychology, Shandong Normal University</span></p>
-
-      <p><strong data-en="2021.09 – 2024.06" data-zh="2021.09 – 2024.06">2021.09 – 2024.06</strong><br>
-      <span data-en="M.A. in Applied Psychology, Guizhou Medical University" data-zh="贵州医科大学 应用心理 硕士">M.A. in Applied Psychology, Guizhou Medical University</span></p>
-
-      <p><strong data-en="2015.09 – 2019.06" data-zh="2015.09 – 2019.06">2015.09 – 2019.06</strong><br>
-      <span data-en="B.S. in Applied Psychology, Liaocheng University" data-zh="聊城大学 应用心理学 学士">B.S. in Applied Psychology, Liaocheng University</span></p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date" data-en="2025.09 – Present" data-zh="2025.09 – 至今">2025.09 – Present</div>
+          <div class="timeline-content" data-en="PhD Student in Developmental and Educational Psychology, Shandong Normal University" data-zh="山东师范大学 发展与教育心理学 博士研究生">PhD Student in Developmental and Educational Psychology, Shandong Normal University</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date" data-en="2021.09 – 2024.06" data-zh="2021.09 – 2024.06">2021.09 – 2024.06</div>
+          <div class="timeline-content" data-en="M.A. in Applied Psychology, Guizhou Medical University" data-zh="贵州医科大学 应用心理 硕士">M.A. in Applied Psychology, Guizhou Medical University</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date" data-en="2015.09 – 2019.06" data-zh="2015.09 – 2019.06">2015.09 – 2019.06</div>
+          <div class="timeline-content" data-en="B.S. in Applied Psychology, Liaocheng University" data-zh="聊城大学 应用心理学 学士">B.S. in Applied Psychology, Liaocheng University</div>
+        </div>
+      </div>
 
       <h3 data-en="Skills" data-zh="专业技能">Skills</h3>
-      <p><span data-en="Statistical Analysis: SPSS, Mplus, R, Python, Matlab" data-zh="统计分析：SPSS、Mplus、R、Python、Matlab">Statistical Analysis: SPSS, Mplus, R, Python, Matlab</span><br>
-      <span data-en="Neuroimaging: EEG, fMRI" data-zh="神经影像：EEG、fMRI">Neuroimaging: EEG, fMRI</span><br>
-      <span data-en="Brain Stimulation: tVNS, tDCS" data-zh="脑刺激干预：tVNS、tDCS">Brain Stimulation: tVNS, tDCS</span></p>
+      <div class="skills-group">
+        <div class="skills-label" data-en="Statistical Analysis" data-zh="统计分析">Statistical Analysis</div>
+        <div class="skill-pills">
+          <span class="skill-pill">SPSS</span>
+          <span class="skill-pill">Mplus</span>
+          <span class="skill-pill">R</span>
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">Matlab</span>
+        </div>
+      </div>
+      <div class="skills-group">
+        <div class="skills-label" data-en="Neuroimaging" data-zh="神经影像">Neuroimaging</div>
+        <div class="skill-pills">
+          <span class="skill-pill">EEG</span>
+          <span class="skill-pill">fMRI</span>
+        </div>
+      </div>
+      <div class="skills-group">
+        <div class="skills-label" data-en="Brain Stimulation" data-zh="脑刺激干预">Brain Stimulation</div>
+        <div class="skill-pills">
+          <span class="skill-pill">tVNS</span>
+          <span class="skill-pill">tDCS</span>
+        </div>
+      </div>
     </div>
   </section>
 
