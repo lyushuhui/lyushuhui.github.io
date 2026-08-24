@@ -104,6 +104,24 @@ img {
 .profile-school {
   font-size: 0.85rem;
   margin: 0;
+}
+.profile-email {
+  font-size: 0.78rem;
+  margin: 0.6rem 0 0;
+  color: rgba(184, 200, 216, 0.7);
+  cursor: pointer;
+  transition: color 0.2s;
+  user-select: all;
+}
+.profile-email:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+html.dark .profile-email {
+  color: rgba(184, 200, 216, 0.6);
+}
+html.dark .profile-email:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
   line-height: 1.4;
   letter-spacing: 0.01em;
 }
@@ -729,6 +747,7 @@ html.dark a {
     <h1 class="profile-name" data-en="Shuhui Lyu" data-zh="吕姝慧">Shuhui Lyu</h1>
     <p class="profile-school" data-en="Shandong Normal University" data-zh="山东师范大学">Shandong Normal University</p>
     <p class="profile-school" data-en="PhD Student" data-zh="在读博士生" style="margin-top: 0.15rem; font-size: 0.78rem;">PhD Student</p>
+    <p class="profile-email" onclick="copyEmail(this)" title="Click to copy">lvhui09271@gmail.com</p>
   </div>
 
   <nav class="nav-section">
@@ -1013,6 +1032,29 @@ function scrollToCard(cardId, linkEl) {
       nav.querySelectorAll('.sub-page-link').forEach(function(l) { l.classList.remove('active'); });
       linkEl.classList.add('active');
     }
+  }
+}
+
+function copyEmail(el) {
+  var email = 'lvhui09271@gmail.com';
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(email).then(function() {
+      var original = el.textContent;
+      el.textContent = 'Copied!';
+      setTimeout(function() { el.textContent = original; }, 1500);
+    });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = email;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+    var original = el.textContent;
+    el.textContent = 'Copied!';
+    setTimeout(function() { el.textContent = original; }, 1500);
   }
 }
 
