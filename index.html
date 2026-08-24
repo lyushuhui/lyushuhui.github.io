@@ -24,7 +24,7 @@ img {
 .sidebar {
   width: 280px;
   min-height: 100vh;
-  background: rgba(13, 50, 39, 0.93);
+  background: #0D1B2A;
   color: rgba(255,255,255,0.5);
   position: fixed;
   top: 0; left: 0; bottom: 0;
@@ -80,7 +80,7 @@ img {
   width: 34px; height: 34px;
   border-radius: 50%;
   background: rgba(255,255,255,0.1);
-  color: rgba(168,216,196,0.85);
+  color: rgba(184,200,216,0.85);
   transition: all 0.2s ease;
 }
 .social-icons a:hover {
@@ -126,7 +126,7 @@ img {
   align-items: center;
   justify-content: space-between;
   padding: 0.4rem 0.7rem;
-  color: rgba(200,230,218,0.85);
+  color: rgba(184,200,216,0.85);
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;
@@ -220,33 +220,51 @@ img {
 .view-home {
   min-height: 100vh;
   position: relative;
-  background: rgba(15, 125, 122, 0.5);
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 .home-bg {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('/background.png');
   background-size: cover;
   background-position: center;
-  opacity: 0.5;
+  opacity: 0.6;
+}
+.home-bg::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(13, 27, 42, 0.9) 0%,
+    rgba(21, 34, 56, 0.82) 50%,
+    rgba(13, 27, 42, 0.88) 100%
+  );
 }
 .home-overlay {
   position: relative;
-  z-index: 1;
-  max-width: 650px;
-  padding: 3rem 2rem;
+  z-index: 2;
+  max-width: 680px;
+  padding: 3rem 2.5rem;
   text-align: center;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  border: 1px solid rgba(245, 200, 66, 0.18);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 .home-overlay p {
   font-size: 1.15rem;
   line-height: 1.9;
-  color: #0D3227;
+  color: #F0EDE6;
   text-align: justify;
 }
 .home-overlay .home-hint {
   font-size: 0.8rem;
-  color: rgba(13, 50, 39, 0.45);
+  color: rgba(245, 200, 66, 0.65);
   margin-top: 2rem;
 }
 
@@ -258,20 +276,20 @@ img {
 
 /* About sections (CV, Research Experience) — pink tone */
 .view-about {
-  background: rgba(226, 192, 197, 0.5);
+  background: #F5F1EA;
 }
 
 /* Research sections (Publications, Conferences) — brown tone */
 .view-research {
-  background: rgba(179, 139, 130, 0.5);
+  background: #E8ECF2;
 }
 
 .section-title {
   font-size: 1.8rem;
-  color: #745648;
+  color: #1B2D45;
   margin-bottom: 1.5rem;
   padding-bottom: 0.8rem;
-  border-bottom: 2px solid rgba(116, 86, 72, 0.2);
+  border-bottom: 2px solid rgba(27, 45, 69, 0.15);
   font-family: "PT Sans", Helvetica, Arial, sans-serif;
 }
 .content-block {
@@ -280,11 +298,11 @@ img {
 .content-block p {
   font-size: 1rem;
   line-height: 1.8;
-  color: #745648;
+  color: #1B2D45;
 }
 .content-block h3 {
   font-size: 1.15rem;
-  color: #745648;
+  color: #1B2D45;
   margin: 1.8rem 0 0.5rem;
   font-weight: 600;
   font-family: "PT Sans", Helvetica, Arial, sans-serif;
@@ -296,23 +314,23 @@ img {
 /* Publication / Conference cards */
 .pub-item, .conf-item {
   padding: 1rem 0;
-  border-bottom: 1px solid rgba(116, 86, 72, 0.15);
+  border-bottom: 1px solid rgba(27, 45, 69, 0.1);
 }
 .pub-item:last-child, .conf-item:last-child {
   border-bottom: none;
 }
 .pub-title {
   font-weight: 600;
-  color: #745648;
+  color: #1B2D45;
   font-size: 1rem;
 }
 .pub-meta {
   font-size: 0.85rem;
-  color: rgba(116, 86, 72, 0.6);
+  color: rgba(27, 45, 69, 0.55);
   margin-top: 0.25rem;
 }
 .author-me {
-  color: #B85C38;
+  color: #E8923C;
   font-weight: 700;
 }
 
@@ -325,66 +343,77 @@ html.dark h1, html.dark h2, html.dark h3,
 html.dark h4, html.dark h5, html.dark h6 {
   color: #e8e8e8;
 }
-html.dark .view-home {
-  background: rgba(15, 125, 122, 0.15);
+html.dark .home-bg { opacity: 0.45; }
+html.dark .home-bg::after {
+  background: linear-gradient(
+    135deg,
+    rgba(13, 27, 42, 0.95) 0%,
+    rgba(21, 34, 56, 0.78) 50%,
+    rgba(13, 27, 42, 0.93) 100%
+  );
+}
+html.dark .home-overlay {
+  background: rgba(0, 0, 0, 0.25);
+  border-color: rgba(245, 200, 66, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 }
 html.dark .home-overlay p {
   color: #c8e0df;
 }
 html.dark .home-overlay .home-hint {
-  color: rgba(200, 224, 223, 0.4);
+  color: rgba(245, 200, 66, 0.45);
 }
 html.dark .view-about {
-  background: rgba(226, 192, 197, 0.08);
+  background: rgba(13, 27, 42, 0.55);
 }
 html.dark .view-research {
-  background: rgba(179, 139, 130, 0.08);
+  background: rgba(13, 27, 42, 0.5);
 }
 html.dark .section-title {
-  color: #d4b8a8;
-  border-bottom-color: rgba(212, 184, 168, 0.2);
+  color: #B8C8D8;
+  border-bottom-color: rgba(184, 200, 216, 0.2);
 }
 html.dark .content-block p {
-  color: #c4a898;
+  color: #8BA4BE;
 }
 html.dark .content-block p strong {
-  color: #e8d5c8;
+  color: #C8D4E0;
 }
 html.dark .content-block p span {
-  color: #c4a898;
+  color: #8BA4BE;
 }
 html.dark .content-block h3 {
-  color: #d4b8a8;
+  color: #B8C8D8;
 }
 html.dark .pub-title, html.dark .conf-title {
-  color: #d4b8a8;
+  color: #B8C8D8;
 }
 html.dark .pub-meta {
-  color: rgba(196, 168, 152, 0.6);
+  color: rgba(139, 164, 190, 0.6);
 }
 html.dark .author-me {
-  color: #E8A060;
+  color: #F5C842;
 }
 html.dark .nav-item > a {
-  color: rgba(200,230,218,0.85);
+  color: rgba(184,200,216,0.85);
 }
 html.dark .sub-nav li a {
-  color: rgba(200,230,218,0.5);
+  color: rgba(184,200,216,0.5);
 }
 html.dark .sub-nav li a:hover {
-  color: rgba(200,230,218,0.8);
+  color: rgba(184,200,216,0.8);
 }
 html.dark .sub-nav li a.active {
-  color: rgba(200,230,218,0.9);
+  color: rgba(184,200,216,0.9);
 }
 html.dark .social-icons a {
-  color: rgba(168,216,196,0.85);
+  color: rgba(184,200,216,0.85);
 }
 html.dark .social-icons a:hover {
   color: #fff;
 }
 html.dark .pub-item, html.dark .conf-item {
-  border-bottom-color: rgba(212, 184, 168, 0.1);
+  border-bottom-color: rgba(184, 200, 216, 0.1);
 }
 html.dark code {
   background-color: #2a2a2a;
@@ -412,7 +441,7 @@ html.dark a {
   top: 1rem; left: 1rem;
   z-index: 200;
   width: 40px; height: 40px;
-  background: rgba(13, 50, 39, 0.93);
+  background: #0D1B2A;
   border: none;
   border-radius: 8px;
   color: #fff;
