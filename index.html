@@ -523,6 +523,105 @@ html.dark .skill-pill:hover {
   background: rgba(184, 200, 216, 0.2);
 }
 
+/* --- Content Cards --- */
+.content-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 3px rgba(13, 27, 42, 0.06), 0 4px 12px rgba(13, 27, 42, 0.04);
+  border: 1px solid rgba(27, 45, 69, 0.06);
+  scroll-margin-top: 60px;
+}
+.content-card:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Sub-page Navigation --- */
+.sub-page-nav {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem 2.5rem;
+  margin: -1.5rem -3rem 1.5rem;
+  background: rgba(245, 241, 234, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(27, 45, 69, 0.08);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.sub-page-nav::-webkit-scrollbar {
+  display: none;
+}
+.view-research .sub-page-nav {
+  background: rgba(232, 236, 242, 0.85);
+}
+.sub-page-link {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #2C3E5A;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(27, 45, 69, 0.08);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.sub-page-link:hover {
+  background: rgba(255, 255, 255, 0.9);
+  color: #1B2D45;
+  border-color: rgba(27, 45, 69, 0.15);
+}
+.sub-page-link.active {
+  background: #1B2D45;
+  color: #F5F1EA;
+  border-color: #1B2D45;
+}
+
+html.dark .content-card {
+  background: #1B2838;
+  border-color: rgba(184, 200, 216, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+html.dark .sub-page-nav {
+  background: rgba(13, 27, 42, 0.85);
+  border-bottom-color: rgba(184, 200, 216, 0.08);
+}
+html.dark .view-research .sub-page-nav {
+  background: rgba(13, 27, 42, 0.85);
+}
+html.dark .sub-page-link {
+  color: #B8C8D8;
+  background: rgba(184, 200, 216, 0.1);
+  border-color: rgba(184, 200, 216, 0.1);
+}
+html.dark .sub-page-link:hover {
+  background: rgba(184, 200, 216, 0.18);
+  color: #C8D4E0;
+}
+html.dark .sub-page-link.active {
+  background: #B8C8D8;
+  color: #0D1B2A;
+  border-color: #B8C8D8;
+}
+
+@media (max-width: 768px) {
+  .content-card {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+  }
+  .sub-page-nav {
+    padding: 0.75rem 1.5rem;
+    margin: -1rem -1.5rem 1rem;
+  }
+}
+
 html.dark .pub-item, html.dark .conf-item {
   border-bottom-color: rgba(184, 200, 216, 0.1);
 }
@@ -640,24 +739,24 @@ html.dark a {
         </a>
       </li>
       <li class="nav-item has-children" data-group="about">
-        <a onclick="toggleGroup(this.closest('.nav-item'))">
+        <a onclick="showPage('about', this.closest('.nav-item'))">
           <span data-en="About" data-zh="关于">About</span>
           <span class="nav-arrow">&#9656;</span>
         </a>
         <ul class="sub-nav">
-          <li data-view="cv"><a onclick="switchView('cv', this.closest('li'), this.closest('.nav-item'))"><span data-en="Brief CV" data-zh="简要简历">Brief CV</span></a></li>
-          <li data-view="research-exp"><a onclick="switchView('research-exp', this.closest('li'), this.closest('.nav-item'))"><span data-en="Research Experience" data-zh="科研经历">Research Experience</span></a></li>
-          <li data-view="interests"><a onclick="switchView('interests', this.closest('li'), this.closest('.nav-item'))"><span data-en="Personal Interests" data-zh="个人兴趣">Personal Interests</span></a></li>
+          <li><a onclick="navigateToSection('about', null, this.closest('li'), this.closest('.nav-item'))"><span data-en="Brief CV" data-zh="简要简历">Brief CV</span></a></li>
+          <li><a onclick="navigateToSection('about', 'about-research-exp', this.closest('li'), this.closest('.nav-item'))"><span data-en="Research Experience" data-zh="科研经历">Research Experience</span></a></li>
+          <li><a onclick="navigateToSection('about', 'about-interests', this.closest('li'), this.closest('.nav-item'))"><span data-en="Personal Interests" data-zh="个人兴趣">Personal Interests</span></a></li>
         </ul>
       </li>
       <li class="nav-item has-children" data-group="research">
-        <a onclick="toggleGroup(this.closest('.nav-item'))">
+        <a onclick="showPage('research', this.closest('.nav-item'))">
           <span data-en="Research" data-zh="研究">Research</span>
           <span class="nav-arrow">&#9656;</span>
         </a>
         <ul class="sub-nav">
-          <li data-view="publications"><a onclick="switchView('publications', this.closest('li'), this.closest('.nav-item'))"><span data-en="Publications" data-zh="论文发表">Publications</span></a></li>
-          <li data-view="conferences"><a onclick="switchView('conferences', this.closest('li'), this.closest('.nav-item'))"><span data-en="Conferences" data-zh="会议参加">Conferences</span></a></li>
+          <li><a onclick="navigateToSection('research', null, this.closest('li'), this.closest('.nav-item'))"><span data-en="Publications" data-zh="论文发表">Publications</span></a></li>
+          <li><a onclick="navigateToSection('research', 'research-conferences', this.closest('li'), this.closest('.nav-item'))"><span data-en="Conferences" data-zh="会议参加">Conferences</span></a></li>
         </ul>
       </li>
     </ul>
@@ -683,78 +782,118 @@ html.dark a {
     </div>
   </section>
 
-  <!-- Brief CV -->
-  <section class="view view-page view-about" id="view-cv">
-    <h1 class="section-title" data-en="Brief CV" data-zh="简要简历">Brief CV</h1>
-    <div class="content-block">
+  <!-- About -->
+  <section class="view view-page view-about" id="view-about">
+    <nav class="sub-page-nav" id="about-nav">
+      <a class="sub-page-link active" onclick="scrollToCard('about-cv', this)"><span data-en="Brief CV" data-zh="简要简历">Brief CV</span></a>
+      <a class="sub-page-link" onclick="scrollToCard('about-research-exp', this)"><span data-en="Research Experience" data-zh="科研经历">Research Experience</span></a>
+      <a class="sub-page-link" onclick="scrollToCard('about-interests', this)"><span data-en="Personal Interests" data-zh="个人兴趣">Personal Interests</span></a>
+    </nav>
 
-      <h3 data-en="Education" data-zh="教育背景">Education</h3>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date" data-en="2025.09 – Present" data-zh="2025.09 – 至今">2025.09 – Present</div>
-          <div class="timeline-content" data-en="PhD Student in Developmental and Educational Psychology, Shandong Normal University" data-zh="山东师范大学 发展与教育心理学 博士研究生">PhD Student in Developmental and Educational Psychology, Shandong Normal University</div>
+    <div class="content-card" id="about-cv">
+      <h1 class="section-title" data-en="Brief CV" data-zh="简要简历">Brief CV</h1>
+      <div class="content-block">
+        <h3 data-en="Education" data-zh="教育背景">Education</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date" data-en="2025.09 – Present" data-zh="2025.09 – 至今">2025.09 – Present</div>
+            <div class="timeline-content" data-en="PhD Student in Developmental and Educational Psychology, Shandong Normal University" data-zh="山东师范大学 发展与教育心理学 博士研究生">PhD Student in Developmental and Educational Psychology, Shandong Normal University</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date" data-en="2021.09 – 2024.06" data-zh="2021.09 – 2024.06">2021.09 – 2024.06</div>
+            <div class="timeline-content" data-en="M.A. in Applied Psychology, Guizhou Medical University" data-zh="贵州医科大学 应用心理 硕士">M.A. in Applied Psychology, Guizhou Medical University</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date" data-en="2015.09 – 2019.06" data-zh="2015.09 – 2019.06">2015.09 – 2019.06</div>
+            <div class="timeline-content" data-en="B.S. in Applied Psychology, Liaocheng University" data-zh="聊城大学 应用心理学 学士">B.S. in Applied Psychology, Liaocheng University</div>
+          </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date" data-en="2021.09 – 2024.06" data-zh="2021.09 – 2024.06">2021.09 – 2024.06</div>
-          <div class="timeline-content" data-en="M.A. in Applied Psychology, Guizhou Medical University" data-zh="贵州医科大学 应用心理 硕士">M.A. in Applied Psychology, Guizhou Medical University</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date" data-en="2015.09 – 2019.06" data-zh="2015.09 – 2019.06">2015.09 – 2019.06</div>
-          <div class="timeline-content" data-en="B.S. in Applied Psychology, Liaocheng University" data-zh="聊城大学 应用心理学 学士">B.S. in Applied Psychology, Liaocheng University</div>
-        </div>
-      </div>
 
-      <h3 data-en="Skills" data-zh="专业技能">Skills</h3>
-      <div class="skills-group">
-        <div class="skills-label" data-en="Statistical Analysis" data-zh="统计分析">Statistical Analysis</div>
-        <div class="skill-pills">
-          <span class="skill-pill">SPSS</span>
-          <span class="skill-pill">Mplus</span>
-          <span class="skill-pill">R</span>
-          <span class="skill-pill">Python</span>
-          <span class="skill-pill">Matlab</span>
+        <h3 data-en="Skills" data-zh="专业技能">Skills</h3>
+        <div class="skills-group">
+          <div class="skills-label" data-en="Statistical Analysis" data-zh="统计分析">Statistical Analysis</div>
+          <div class="skill-pills">
+            <span class="skill-pill">SPSS</span>
+            <span class="skill-pill">Mplus</span>
+            <span class="skill-pill">R</span>
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">Matlab</span>
+          </div>
+        </div>
+        <div class="skills-group">
+          <div class="skills-label" data-en="Neuroimaging" data-zh="神经影像">Neuroimaging</div>
+          <div class="skill-pills">
+            <span class="skill-pill">EEG</span>
+            <span class="skill-pill">fMRI</span>
+          </div>
+        </div>
+        <div class="skills-group">
+          <div class="skills-label" data-en="Brain Stimulation" data-zh="脑刺激干预">Brain Stimulation</div>
+          <div class="skill-pills">
+            <span class="skill-pill">tVNS</span>
+            <span class="skill-pill">tDCS</span>
+          </div>
         </div>
       </div>
-      <div class="skills-group">
-        <div class="skills-label" data-en="Neuroimaging" data-zh="神经影像">Neuroimaging</div>
-        <div class="skill-pills">
-          <span class="skill-pill">EEG</span>
-          <span class="skill-pill">fMRI</span>
-        </div>
+    </div>
+
+    <div class="content-card" id="about-research-exp">
+      <h1 class="section-title" data-en="Research Experience" data-zh="科研经历">Research Experience</h1>
+      <div class="content-block">
+        <h3 data-en="2024.09 – Present · EEG/fMRI Research · Shandong Normal University" data-zh="2024.09 – 至今 · 脑电/fMRI 研究 · 山东师范大学">2024.09 – Present · EEG/fMRI Research · Shandong Normal University</h3>
+        <p data-en="Under the metacontrol theoretical framework, conducting EEG and fMRI experiments to investigate the electrophysiological characteristics and dopamine basis of cognitive conflict and interference control." data-zh="在元控制理论框架下，开展脑电与 fMRI 实验，探究认知冲突、抑制控制的电生理特征与多巴胺基础。">Under the metacontrol theoretical framework, conducting EEG and fMRI experiments to investigate the electrophysiological characteristics and dopamine basis of cognitive conflict and interference control.</p>
+
+        <h3 data-en="2021.09 – 2024.06 · EEG Research · Guizhou Medical University" data-zh="2021.09 – 2024.06 · 脑电研究 · 贵州医科大学">2021.09 – 2024.06 · EEG Research · Guizhou Medical University</h3>
+        <p data-en="Boredom traits and boredom proneness (the influence of early educational experiences on boredom tendency); binge eating behavior (gender differences in binge eating behavior in Chinese culture)." data-zh="无聊特质与无聊倾向性（早年教育经历对无聊倾向的影响）；暴食行为（中国文化背景下暴食行为的性别差异）。">Boredom traits and boredom proneness (the influence of early educational experiences on boredom tendency); binge eating behavior (gender differences in binge eating behavior in Chinese culture).</p>
       </div>
-      <div class="skills-group">
-        <div class="skills-label" data-en="Brain Stimulation" data-zh="脑刺激干预">Brain Stimulation</div>
-        <div class="skill-pills">
-          <span class="skill-pill">tVNS</span>
-          <span class="skill-pill">tDCS</span>
-        </div>
+    </div>
+
+    <div class="content-card" id="about-interests">
+      <h1 class="section-title" data-en="Personal Interests" data-zh="个人兴趣">Personal Interests</h1>
+      <div class="content-block">
+        <p data-en="Coming soon..." data-zh="待补充...">Coming soon...</p>
       </div>
     </div>
   </section>
 
-  <!-- Research Experience -->
-  <section class="view view-page view-about" id="view-research-exp">
-    <h1 class="section-title" data-en="Research Experience" data-zh="科研经历">Research Experience</h1>
-    <div class="content-block">
+  <!-- Research -->
+  <section class="view view-page view-research" id="view-research">
+    <nav class="sub-page-nav" id="research-nav">
+      <a class="sub-page-link active" onclick="scrollToCard('research-publications', this)"><span data-en="Publications" data-zh="论文发表">Publications</span></a>
+      <a class="sub-page-link" onclick="scrollToCard('research-conferences', this)"><span data-en="Conferences" data-zh="会议参加">Conferences</span></a>
+    </nav>
 
-      <h3 data-en="2024.09 – Present · EEG/fMRI Research · Shandong Normal University" data-zh="2024.09 – 至今 · 脑电/fMRI 研究 · 山东师范大学">2024.09 – Present · EEG/fMRI Research · Shandong Normal University</h3>
-      <p data-en="Under the metacontrol theoretical framework, conducting EEG and fMRI experiments to investigate the electrophysiological characteristics and dopamine basis of cognitive conflict and interference control." data-zh="在元控制理论框架下，开展脑电与 fMRI 实验，探究认知冲突、抑制控制的电生理特征与多巴胺基础。">Under the metacontrol theoretical framework, conducting EEG and fMRI experiments to investigate the electrophysiological characteristics and dopamine basis of cognitive conflict and interference control.</p>
-
-      <h3 data-en="2021.09 – 2024.06 · EEG Research · Guizhou Medical University" data-zh="2021.09 – 2024.06 · 脑电研究 · 贵州医科大学">2021.09 – 2024.06 · EEG Research · Guizhou Medical University</h3>
-      <p data-en="Boredom traits and boredom proneness (the influence of early educational experiences on boredom tendency); binge eating behavior (gender differences in binge eating behavior in Chinese culture)." data-zh="无聊特质与无聊倾向性（早年教育经历对无聊倾向的影响）；暴食行为（中国文化背景下暴食行为的性别差异）。">Boredom traits and boredom proneness (the influence of early educational experiences on boredom tendency); binge eating behavior (gender differences in binge eating behavior in Chinese culture).</p>
+    <div class="content-card" id="research-publications">
+      <h1 class="section-title" data-en="Publications" data-zh="论文发表">Publications</h1>
+      <div class="content-block">
+        <div class="pub-item">
+          <div class="pub-title" data-en="Pi, Y., Zhang, Q., Lyu, S., Beste, C., Colzato, L., &amp; Hommel, B. (2026). Metacontrol-related aperiodic and periodic neural activity in cognitive aging: enhancing the neural signal-to-noise ratio through anodal transcranial direct current stimulation." data-zh="Pi, Y., Zhang, Q., Lyu, S., Beste, C., Colzato, L., &amp; Hommel, B. (2026). 认知老化中与元控制相关的非周期性和周期性神经活动：通过阳极经颅直流电刺激增强神经信噪比。">Pi, Y., Zhang, Q., <span class="author-me">Lyu, S.</span>, Beste, C., Colzato, L., &amp; Hommel, B. (2026). Metacontrol-related aperiodic and periodic neural activity in cognitive aging: enhancing the neural signal-to-noise ratio through anodal transcranial direct current stimulation.</div>
+          <div class="pub-meta"><em>GeroScience</em>, 1-17.</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title" data-en="Fan, J., Lyu, S., Xu, X., Colzato, L., &amp; Hommel, B. (2026). The impact of positive and negative affect on aperiodic EEG activity: evidence for a shared neural basis of metacontrol and emotion." data-zh="Fan, J., Lyu, S., Xu, X., Colzato, L., &amp; Hommel, B. (2026). 正负性情绪对非周期性脑电活动的影响：元控制与情绪共享神经基础的证据。">Fan, J., <span class="author-me">Lyu, S.</span>, Xu, X., Colzato, L., &amp; Hommel, B. (2026). The impact of positive and negative affect on aperiodic EEG activity: evidence for a shared neural basis of metacontrol and emotion.</div>
+          <div class="pub-meta"><em>Cerebral Cortex</em>, 36(1), bhaf335.</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title" data-en="Li, C., Lyu, S., Yan, J., &amp; Meng, X. (2023). The effect of gender in binge eating behavior in Chinese culture: the serial mediation model of body dissatisfaction and self-acceptance." data-zh="Li, C., Lyu, S., Yan, J., &amp; Meng, X. (2023). 中国文化中暴食行为的性别差异：身体不满意与自我接纳的链式中介模型。">Li, C., <span class="author-me">Lyu, S.</span>, Yan, J., &amp; Meng, X. (2023). The effect of gender in binge eating behavior in Chinese culture: the serial mediation model of body dissatisfaction and self-acceptance.</div>
+          <div class="pub-meta"><em>Frontiers in Psychology</em>, 14, 1285272. <span data-en="(co-first author)" data-zh="（共同一作）">(co-first author)</span></div>
+        </div>
+      </div>
     </div>
-  </section>
 
-  <!-- Personal Interests -->
-  <section class="view view-page view-about" id="view-interests">
-    <h1 class="section-title" data-en="Personal Interests" data-zh="个人兴趣">Personal Interests</h1>
-    <div class="content-block">
-      <p data-en="Coming soon..." data-zh="待补充...">Coming soon...</p>
+    <div class="content-card" id="research-conferences">
+      <h1 class="section-title" data-en="Conferences" data-zh="会议参加">Conferences</h1>
+      <div class="content-block">
+        <div class="conf-item">
+          <div class="conf-title" data-en="8th European Society for Cognitive and Affective Neuroscience Meeting (ESCAN) · June 2025 · Oral Presentation" data-zh="第八届欧洲认知与情感神经科学学会会议（ESCAN）· 2025年6月 · 口头报告">8th European Society for Cognitive and Affective Neuroscience Meeting (ESCAN) · June 2025 · Oral Presentation</div>
+          <div class="pub-meta" data-en="Variability, but not Concentration, of Neuromelanin in the Substantia Nigra Predicts Individual Differences in Interference Control" data-zh="黑质中神经黑色素的变异性（而非浓度）可预测个体在干扰控制方面的差异">Variability, but not Concentration, of Neuromelanin in the Substantia Nigra Predicts Individual Differences in Interference Control</div>
+        </div>
+      </div>
     </div>
-  </section>
+  </section>  </section>
 
   <!-- Publications -->
   <section class="view view-page view-research" id="view-publications">
@@ -797,6 +936,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initTheme();
   initControls();
   initMobileMenu();
+  initScrollSpy();
 });
 
 function switchView(viewId, activeEl, parentGroup) {
@@ -811,7 +951,95 @@ function switchView(viewId, activeEl, parentGroup) {
   });
   if (activeEl) activeEl.classList.add('active');
   if (parentGroup) parentGroup.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'auto' });
   closeMobileMenu();
+}
+
+function showPage(viewId, parentGroup) {
+  document.querySelectorAll('.nav-item.has-children').forEach(function (g) {
+    var groupId = g.getAttribute('data-group');
+    if (groupId === viewId) {
+      g.classList.add('expanded');
+    } else {
+      g.classList.remove('expanded');
+    }
+  });
+  switchView(viewId, null, parentGroup);
+}
+
+function navigateToSection(viewId, anchorId, activeEl, parentGroup) {
+  var targetView = document.getElementById('view-' + viewId);
+  var isAlreadyActive = targetView && targetView.classList.contains('active');
+
+  if (!isAlreadyActive) {
+    switchView(viewId, activeEl, parentGroup);
+  } else {
+    document.querySelectorAll('.nav-item, .sub-nav li').forEach(function (n) {
+      n.classList.remove('active');
+    });
+    if (activeEl) activeEl.classList.add('active');
+    if (parentGroup) parentGroup.classList.add('active');
+  }
+
+  document.querySelectorAll('.nav-item.has-children').forEach(function (g) {
+    var groupId = g.getAttribute('data-group');
+    if (groupId === viewId) {
+      g.classList.add('expanded');
+    } else {
+      g.classList.remove('expanded');
+    }
+  });
+
+  setTimeout(function() {
+    if (anchorId) {
+      var el = document.getElementById(anchorId);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, 50);
+
+  closeMobileMenu();
+}
+
+function scrollToCard(cardId, linkEl) {
+  var card = document.getElementById(cardId);
+  if (card) {
+    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  if (linkEl) {
+    var nav = linkEl.closest('.sub-page-nav');
+    if (nav) {
+      nav.querySelectorAll('.sub-page-link').forEach(function(l) { l.classList.remove('active'); });
+      linkEl.classList.add('active');
+    }
+  }
+}
+
+function initScrollSpy() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var id = entry.target.id;
+        var viewSection = entry.target.closest('.view');
+        if (!viewSection) return;
+        var nav = viewSection.querySelector('.sub-page-nav');
+        if (!nav) return;
+        nav.querySelectorAll('.sub-page-link').forEach(function(link) {
+          var onclickStr = link.getAttribute('onclick') || '';
+          if (onclickStr.indexOf("'" + id + "'") !== -1) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+
+  document.querySelectorAll('.content-card').forEach(function(card) {
+    observer.observe(card);
+  });
 }
 
 function toggleGroup(item) {
@@ -821,11 +1049,6 @@ function toggleGroup(item) {
   });
   if (!wasExpanded) {
     item.classList.add('expanded');
-    var firstSub = item.querySelector('.sub-nav li');
-    if (firstSub) {
-      var subView = firstSub.getAttribute('data-view');
-      if (subView) switchView(subView, firstSub, item);
-    }
   } else {
     item.classList.remove('expanded');
   }
