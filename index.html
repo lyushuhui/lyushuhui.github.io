@@ -236,7 +236,7 @@ html.dark .profile-email:hover {
 .home-bg {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-image: url('/background.png');
+  background-image: url('/background.webp');
   background-size: cover;
   background-position: center;
   opacity: 0.6;
@@ -275,6 +275,78 @@ html.dark .profile-email:hover {
   font-size: 0.8rem;
   color: rgba(245, 200, 66, 0.65);
   margin-top: 2rem;
+}
+.home-overlay .home-intro {
+  font-size: 1.2rem;
+  line-height: 1.75;
+  text-align: center;
+  margin: 0;
+}
+.home-themes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin: 1.7rem 0 1.5rem;
+  text-align: left;
+}
+.theme-row {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+}
+.theme-num {
+  flex: none;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(245, 200, 66, 0.75);
+  padding-top: 0.24rem;
+  font-variant-numeric: tabular-nums;
+}
+.theme-body {
+  flex: 1;
+}
+.theme-title {
+  color: #F0EDE6;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.theme-desc {
+  color: rgba(240, 237, 230, 0.68);
+  font-size: 0.84rem;
+  line-height: 1.55;
+  margin-top: 0.1rem;
+}
+.home-methods {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-bottom: 1.6rem;
+}
+.method-tag {
+  padding: 0.2rem 0.62rem;
+  border-radius: 999px;
+  border: 1px solid rgba(245, 200, 66, 0.25);
+  color: rgba(245, 200, 66, 0.85);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+}
+.home-profile-link {
+  display: inline-block;
+  margin-top: 0.2rem;
+  font-size: 0.82rem;
+  color: rgba(245, 200, 66, 0.8);
+  border-bottom: 1px solid rgba(245, 200, 66, 0.35);
+  padding-bottom: 1px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.home-profile-link:hover {
+  color: #F5C842;
+  border-bottom-color: #F5C842;
+  text-decoration: none;
 }
 
 /* --- Content Page Sections --- */
@@ -342,6 +414,25 @@ html.dark .profile-email:hover {
   color: #E8923C;
   font-weight: 700;
 }
+.doi-link {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0.08rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(232, 146, 60, 0.14);
+  color: #8A4510;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  vertical-align: 1px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.doi-link:hover {
+  background: #A85412;
+  color: #fff;
+  text-decoration: none;
+}
 
 /* === DARK MODE === */
 html.dark body {
@@ -402,6 +493,14 @@ html.dark .pub-meta {
 }
 html.dark .author-me {
   color: #F5C842;
+}
+html.dark .doi-link {
+  background: rgba(245, 200, 66, 0.12);
+  color: #F5C842;
+}
+html.dark .doi-link:hover {
+  background: #F5C842;
+  color: #0D1B2A;
 }
 html.dark .nav-item > a {
   color: rgba(184,200,216,0.85);
@@ -699,6 +798,9 @@ html.dark a {
   .home-overlay {
     padding: 2rem 1.5rem;
   }
+  .home-overlay .home-intro {
+    font-size: 1.1rem;
+  }
 }
 </style>
 
@@ -710,7 +812,7 @@ html.dark a {
 <aside class="sidebar">
   <div class="sidebar-profile">
     <div class="avatar">
-      <img src="/public/avatar.png" alt="Shuhui Lyu">
+      <img src="/public/avatar.webp" alt="Shuhui Lyu">
     </div>
 
     <div class="social-icons">
@@ -754,7 +856,8 @@ html.dark a {
           <span class="nav-arrow">&#9656;</span>
         </a>
         <ul class="sub-nav">
-          <li><a onclick="navigateToSection('about', null, this.closest('li'), this.closest('.nav-item'))"><span data-en="Brief CV" data-zh="简要简历">Brief CV</span></a></li>
+          <li><a onclick="navigateToSection('about', null, this.closest('li'), this.closest('.nav-item'))"><span data-en="Research Profile" data-zh="研究简介">Research Profile</span></a></li>
+          <li><a onclick="navigateToSection('about', 'about-cv', this.closest('li'), this.closest('.nav-item'))"><span data-en="Brief CV" data-zh="简要简历">Brief CV</span></a></li>
           <li><a onclick="navigateToSection('about', 'about-research-exp', this.closest('li'), this.closest('.nav-item'))"><span data-en="Research Experience" data-zh="科研经历">Research Experience</span></a></li>
           <li><a onclick="navigateToSection('about', 'about-interests', this.closest('li'), this.closest('.nav-item'))"><span data-en="Personal Interests" data-zh="个人兴趣">Personal Interests</span></a></li>
         </ul>
@@ -787,7 +890,42 @@ html.dark a {
   <section class="view view-home active" id="view-home">
     <div class="home-bg" id="homeBg"></div>
     <div class="home-overlay">
-      <p data-en="Currently, my research is grounded in the metacontrol theoretical framework, focusing on the cognitive and neural mechanisms underlying individual differences in cognitive control. I am particularly interested in how stable neurobiological characteristics, including dopamine-related variation, and personality traits are associated with individual differences in cognitive control and emotional processing. Using behavioral experiments, EEG, and multimodal MRI, I investigate these questions through complementary approaches, including neuromelanin-sensitive MRI, resting-state functional connectivity, and task-based connectivity analyses. I am also interested in using effective connectivity approaches, such as dynamic causal modeling (DCM), to further investigate the neural mechanisms underlying these associations." data-zh="目前，我的研究基于“元控制”（metacontrol）理论框架，重点探讨认知控制个体差异背后的认知与神经机制。我特别关注稳定的神经生物学特征（包括与多巴胺相关的变异）以及人格特质，如何与认知控制和情绪处理方面的个体差异产生关联。我通过行为实验、脑电图（EEG）以及多模态磁共振成像（MRI）等互补手段开展研究，具体方法包括神经黑色素敏感MRI、静息态功能连接分析以及基于任务的功能连接分析。此外，我也致力于运用有效连接（effective connectivity）分析方法——例如动态因果模型（DCM）——来进一步探究这些关联背后的神经机制。">Currently, my research is grounded in the metacontrol theoretical framework, focusing on the cognitive and neural mechanisms underlying individual differences in cognitive control. I am particularly interested in how stable neurobiological characteristics, including dopamine-related variation, and personality traits are associated with individual differences in cognitive control and emotional processing. Using behavioral experiments, EEG, and multimodal MRI, I investigate these questions through complementary approaches, including neuromelanin-sensitive MRI, resting-state functional connectivity, and task-based connectivity analyses. I am also interested in using effective connectivity approaches, such as dynamic causal modeling (DCM), to further investigate the neural mechanisms underlying these associations.</p>
+      <p class="home-intro" data-en="I study why people differ in cognitive control — and how dopamine-related brain variation and personality shape those differences." data-zh="我研究人们为什么在认知控制上存在差异——以及多巴胺相关的脑特征与人格如何塑造这些差异。">I study why people differ in cognitive control — and how dopamine-related brain variation and personality shape those differences.</p>
+
+      <div class="home-themes">
+        <div class="theme-row">
+          <span class="theme-num">01</span>
+          <div class="theme-body">
+            <div class="theme-title" data-en="Metacontrol &amp; cognitive control" data-zh="元控制与认知控制">Metacontrol &amp; cognitive control</div>
+            <div class="theme-desc" data-en="Behavioral and MRI studies of conflict and interference control" data-zh="行为实验与 MRI，考察冲突与干扰控制">Behavioral and MRI studies of conflict and interference control</div>
+          </div>
+        </div>
+        <div class="theme-row">
+          <span class="theme-num">02</span>
+          <div class="theme-body">
+            <div class="theme-title" data-en="Neuromelanin &amp; dopamine" data-zh="神经黑色素与多巴胺">Neuromelanin &amp; dopamine</div>
+            <div class="theme-desc" data-en="Neuromelanin-sensitive MRI of the substantia nigra" data-zh="黑质神经黑色素敏感 MRI">Neuromelanin-sensitive MRI of the substantia nigra</div>
+          </div>
+        </div>
+        <div class="theme-row">
+          <span class="theme-num">03</span>
+          <div class="theme-body">
+            <div class="theme-title" data-en="Emotion &amp; individual differences" data-zh="情绪与个体差异">Emotion &amp; individual differences</div>
+            <div class="theme-desc" data-en="Affect, personality, and aperiodic EEG activity" data-zh="情绪、人格与非周期 EEG 活动">Affect, personality, and aperiodic EEG activity</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="home-methods">
+        <span class="method-tag">fMRI</span>
+        <span class="method-tag" data-en="Neuromelanin MRI" data-zh="神经黑色素 MRI">Neuromelanin MRI</span>
+        <span class="method-tag">DCM</span>
+        <span class="method-tag">EEG</span>
+        <span class="method-tag">tDCS</span>
+        <span class="method-tag">tVNS</span>
+      </div>
+
+      <a class="home-profile-link" onclick="showProfile()" data-en="Read full research profile →" data-zh="查看完整研究简介 →">Read full research profile →</a>
       <p class="home-hint" data-en="PhD Student · Shandong Normal University" data-zh="山东师范大学 · 心理学博士研究生">PhD Student · Shandong Normal University</p>
     </div>
   </section>
@@ -795,10 +933,18 @@ html.dark a {
   <!-- About -->
   <section class="view view-page view-about" id="view-about">
     <nav class="sub-page-nav" id="about-nav">
-      <a class="sub-page-link active" onclick="scrollToCard('about-cv', this)"><span data-en="Brief CV" data-zh="简要简历">Brief CV</span></a>
+      <a class="sub-page-link active" onclick="scrollToCard('about-profile', this)"><span data-en="Research Profile" data-zh="研究简介">Research Profile</span></a>
+      <a class="sub-page-link" onclick="scrollToCard('about-cv', this)"><span data-en="Brief CV" data-zh="简要简历">Brief CV</span></a>
       <a class="sub-page-link" onclick="scrollToCard('about-research-exp', this)"><span data-en="Research Experience" data-zh="科研经历">Research Experience</span></a>
       <a class="sub-page-link" onclick="scrollToCard('about-interests', this)"><span data-en="Personal Interests" data-zh="个人兴趣">Personal Interests</span></a>
     </nav>
+
+    <div class="content-card" id="about-profile">
+      <h1 class="section-title" data-en="Research Profile" data-zh="研究简介">Research Profile</h1>
+      <div class="content-block">
+        <p data-en="Currently, my research is grounded in the metacontrol theoretical framework, focusing on the cognitive and neural mechanisms underlying individual differences in cognitive control. I am particularly interested in how stable neurobiological characteristics, including dopamine-related variation, and personality traits are associated with individual differences in cognitive control and emotional processing. Using behavioral experiments, EEG, and multimodal MRI, I investigate these questions through complementary approaches, including neuromelanin-sensitive MRI, resting-state functional connectivity, and task-based connectivity analyses. I am also interested in using effective connectivity approaches, such as dynamic causal modeling (DCM), to further investigate the neural mechanisms underlying these associations." data-zh="目前，我的研究基于“元控制”（metacontrol）理论框架，重点探讨认知控制个体差异背后的认知与神经机制。我特别关注稳定的神经生物学特征（包括与多巴胺相关的变异）以及人格特质，如何与认知控制和情绪处理方面的个体差异产生关联。我通过行为实验、脑电图（EEG）以及多模态磁共振成像（MRI）等互补手段开展研究，具体方法包括神经黑色素敏感MRI、静息态功能连接分析以及基于任务的功能连接分析。此外，我也致力于运用有效连接（effective connectivity）分析方法——例如动态因果模型（DCM）——来进一步探究这些关联背后的神经机制。">Currently, my research is grounded in the metacontrol theoretical framework, focusing on the cognitive and neural mechanisms underlying individual differences in cognitive control. I am particularly interested in how stable neurobiological characteristics, including dopamine-related variation, and personality traits are associated with individual differences in cognitive control and emotional processing. Using behavioral experiments, EEG, and multimodal MRI, I investigate these questions through complementary approaches, including neuromelanin-sensitive MRI, resting-state functional connectivity, and task-based connectivity analyses. I am also interested in using effective connectivity approaches, such as dynamic causal modeling (DCM), to further investigate the neural mechanisms underlying these associations.</p>
+      </div>
+    </div>
 
     <div class="content-card" id="about-cv">
       <h1 class="section-title" data-en="Brief CV" data-zh="简要简历">Brief CV</h1>
@@ -881,19 +1027,19 @@ html.dark a {
       <div class="content-block">
         <div class="pub-item">
           <div class="pub-title" data-en="Lyu, S., Zhang, H., Yan, J., Gao, J., Wang, K., Colzato, L., &amp; Hommel, B. (2026). Variability, but Not Concentration, of Neuromelanin in the Substantia Nigra Is Associated With Individual Differences in Interference Control." data-zh="Lyu, S., Zhang, H., Yan, J., Gao, J., Wang, K., Colzato, L., &amp; Hommel, B. (2026). 黑质中神经黑色素的变异性（而非浓度）与干扰控制的个体差异相关。"><span class="author-me">Lyu, S.</span>, Zhang, H., Yan, J., Gao, J., Wang, K., Colzato, L., &amp; Hommel, B. (2026). Variability, but Not Concentration, of Neuromelanin in the Substantia Nigra Is Associated With Individual Differences in Interference Control.</div>
-          <div class="pub-meta"><em>Human Brain Mapping</em>, 47(16), e70663.</div>
+          <div class="pub-meta"><em>Human Brain Mapping</em>, 47(16), e70663. <a class="doi-link" href="https://doi.org/10.1002/hbm.70663" target="_blank" rel="noopener">DOI</a></div>
         </div>
         <div class="pub-item">
           <div class="pub-title" data-en="Pi, Y., Zhang, Q., Lyu, S., Beste, C., Colzato, L., &amp; Hommel, B. (2026). Metacontrol-related aperiodic and periodic neural activity in cognitive aging: enhancing the neural signal-to-noise ratio through anodal transcranial direct current stimulation." data-zh="Pi, Y., Zhang, Q., Lyu, S., Beste, C., Colzato, L., &amp; Hommel, B. (2026). 认知老化中与元控制相关的非周期性和周期性神经活动：通过阳极经颅直流电刺激增强神经信噪比。">Pi, Y., Zhang, Q., <span class="author-me">Lyu, S.</span>, Beste, C., Colzato, L., &amp; Hommel, B. (2026). Metacontrol-related aperiodic and periodic neural activity in cognitive aging: enhancing the neural signal-to-noise ratio through anodal transcranial direct current stimulation.</div>
-          <div class="pub-meta"><em>GeroScience</em>, 1-17.</div>
+          <div class="pub-meta"><em>GeroScience</em>, 1-17. <a class="doi-link" href="https://doi.org/10.1007/s11357-025-02077-8" target="_blank" rel="noopener">DOI</a></div>
         </div>
         <div class="pub-item">
           <div class="pub-title" data-en="Fan, J., Lyu, S., Xu, X., Colzato, L., &amp; Hommel, B. (2026). The impact of positive and negative affect on aperiodic EEG activity: evidence for a shared neural basis of metacontrol and emotion." data-zh="Fan, J., Lyu, S., Xu, X., Colzato, L., &amp; Hommel, B. (2026). 正负性情绪对非周期性脑电活动的影响：元控制与情绪共享神经基础的证据。">Fan, J., <span class="author-me">Lyu, S.</span>, Xu, X., Colzato, L., &amp; Hommel, B. (2026). The impact of positive and negative affect on aperiodic EEG activity: evidence for a shared neural basis of metacontrol and emotion.</div>
-          <div class="pub-meta"><em>Cerebral Cortex</em>, 36(1), bhaf335.</div>
+          <div class="pub-meta"><em>Cerebral Cortex</em>, 36(1), bhaf335. <a class="doi-link" href="https://doi.org/10.1093/cercor/bhaf335" target="_blank" rel="noopener">DOI</a></div>
         </div>
         <div class="pub-item">
           <div class="pub-title" data-en="Li, C., Lyu, S., Yan, J., &amp; Meng, X. (2023). The effect of gender in binge eating behavior in Chinese culture: the serial mediation model of body dissatisfaction and self-acceptance." data-zh="Li, C., Lyu, S., Yan, J., &amp; Meng, X. (2023). 中国文化中暴食行为的性别差异：身体不满意与自我接纳的链式中介模型。">Li, C., <span class="author-me">Lyu, S.</span>, Yan, J., &amp; Meng, X. (2023). The effect of gender in binge eating behavior in Chinese culture: the serial mediation model of body dissatisfaction and self-acceptance.</div>
-          <div class="pub-meta"><em>Frontiers in Psychology</em>, 14, 1285272. <span data-en="(co-first author)" data-zh="（共同一作）">(co-first author)</span></div>
+          <div class="pub-meta"><em>Frontiers in Psychology</em>, 14, 1285272. <span data-en="(co-first author)" data-zh="（共同一作）">(co-first author)</span> <a class="doi-link" href="https://doi.org/10.3389/fpsyg.2023.1285272" target="_blank" rel="noopener">DOI</a></div>
         </div>
       </div>
     </div>
@@ -982,6 +1128,12 @@ function navigateToSection(viewId, anchorId, activeEl, parentGroup) {
   }, 50);
 
   closeMobileMenu();
+}
+
+function showProfile() {
+  var group = document.querySelector('.nav-item[data-group=about]');
+  var firstSub = group ? group.querySelector('.sub-nav li') : null;
+  navigateToSection('about', 'about-profile', firstSub, group);
 }
 
 function scrollToCard(cardId, linkEl) {
