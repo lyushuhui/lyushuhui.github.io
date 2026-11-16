@@ -122,17 +122,8 @@ html.dark .profile-email {
 html.dark .profile-email:hover {
   color: rgba(255, 255, 255, 0.85);
 }
-  line-height: 1.4;
-  letter-spacing: 0.01em;
-}
 
 /* --- Navigation --- */
-.nav-section {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 .nav-list {
   list-style: none;
   padding: 0;
@@ -912,42 +903,11 @@ html.dark a {
         </div>
       </div>
     </div>
-  </section>  </section>
-
-  <!-- Publications -->
-  <section class="view view-page view-research" id="view-publications">
-    <h1 class="section-title" data-en="Publications" data-zh="论文发表">Publications</h1>
-    <div class="content-block">
-      <div class="pub-item">
-        <div class="pub-title" data-en="Pi, Y., Zhang, Q., Lyu, S., Beste, C., Colzato, L., &amp; Hommel, B. (2026). Metacontrol-related aperiodic and periodic neural activity in cognitive aging: enhancing the neural signal-to-noise ratio through anodal transcranial direct current stimulation." data-zh="Pi, Y., Zhang, Q., Lyu, S., Beste, C., Colzato, L., &amp; Hommel, B. (2026). 认知老化中与元控制相关的非周期性和周期性神经活动：通过阳极经颅直流电刺激增强神经信噪比。">Pi, Y., Zhang, Q., <span class="author-me">Lyu, S.</span>, Beste, C., Colzato, L., &amp; Hommel, B. (2026). Metacontrol-related aperiodic and periodic neural activity in cognitive aging: enhancing the neural signal-to-noise ratio through anodal transcranial direct current stimulation.</div>
-        <div class="pub-meta"><em>GeroScience</em>, 1-17.</div>
-      </div>
-      <div class="pub-item">
-        <div class="pub-title" data-en="Fan, J., Lyu, S., Xu, X., Colzato, L., &amp; Hommel, B. (2026). The impact of positive and negative affect on aperiodic EEG activity: evidence for a shared neural basis of metacontrol and emotion." data-zh="Fan, J., Lyu, S., Xu, X., Colzato, L., &amp; Hommel, B. (2026). 正负性情绪对非周期性脑电活动的影响：元控制与情绪共享神经基础的证据。">Fan, J., <span class="author-me">Lyu, S.</span>, Xu, X., Colzato, L., &amp; Hommel, B. (2026). The impact of positive and negative affect on aperiodic EEG activity: evidence for a shared neural basis of metacontrol and emotion.</div>
-        <div class="pub-meta"><em>Cerebral Cortex</em>, 36(1), bhaf335.</div>
-      </div>
-      <div class="pub-item">
-        <div class="pub-title" data-en="Li, C., Lyu, S., Yan, J., &amp; Meng, X. (2023). The effect of gender in binge eating behavior in Chinese culture: the serial mediation model of body dissatisfaction and self-acceptance." data-zh="Li, C., Lyu, S., Yan, J., &amp; Meng, X. (2023). 中国文化中暴食行为的性别差异：身体不满意与自我接纳的链式中介模型。">Li, C., <span class="author-me">Lyu, S.</span>, Yan, J., &amp; Meng, X. (2023). The effect of gender in binge eating behavior in Chinese culture: the serial mediation model of body dissatisfaction and self-acceptance.</div>
-        <div class="pub-meta"><em>Frontiers in Psychology</em>, 14, 1285272. <span data-en="(co-first author)" data-zh="（共同一作）">(co-first author)</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Conferences -->
-  <section class="view view-page view-research" id="view-conferences">
-    <h1 class="section-title" data-en="Conferences" data-zh="会议参加">Conferences</h1>
-    <div class="content-block">
-      <div class="conf-item">
-        <div class="conf-title" data-en="8th European Society for Cognitive and Affective Neuroscience Meeting (ESCAN) · June 2025 · Oral Presentation" data-zh="第八届欧洲认知与情感神经科学学会会议（ESCAN）· 2025年6月 · 口头报告">8th European Society for Cognitive and Affective Neuroscience Meeting (ESCAN) · June 2025 · Oral Presentation</div>
-        <div class="pub-meta" data-en="Variability, but not Concentration, of Neuromelanin in the Substantia Nigra Predicts Individual Differences in Interference Control" data-zh="黑质中神经黑色素的变异性（而非浓度）可预测个体在干扰控制方面的差异">Variability, but not Concentration, of Neuromelanin in the Substantia Nigra Predicts Individual Differences in Interference Control</div>
-      </div>
-    </div>
   </section>
 
 </main>
 
 <script>
-var currentView = 'home';
 var currentLang = 'en';
 var isDark = false;
 
@@ -959,7 +919,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function switchView(viewId, activeEl, parentGroup) {
-  currentView = viewId;
   document.querySelectorAll('.view').forEach(function (v) {
     v.classList.remove('active');
   });
@@ -1082,19 +1041,6 @@ function initScrollSpy() {
   document.querySelectorAll('.content-card').forEach(function(card) {
     observer.observe(card);
   });
-}
-
-function toggleGroup(item) {
-  var wasExpanded = item.classList.contains('expanded');
-  document.querySelectorAll('.nav-item.has-children').forEach(function (g) {
-    if (g !== item) g.classList.remove('expanded');
-  });
-  if (!wasExpanded) {
-    item.classList.add('expanded');
-  } else {
-    item.classList.remove('expanded');
-  }
-  closeMobileMenu();
 }
 
 function initControls() {
